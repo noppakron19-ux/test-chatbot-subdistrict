@@ -7,6 +7,7 @@ export interface SaoProfile {
   address?: string;
   phone?: string;
   emergencyPhone?: string;
+  lineId?: string;
   workHours?: string;
   vision?: string;
   updatedAt?: string;
@@ -31,6 +32,8 @@ export interface PrPost {
   tone?: string;
   hashtags?: string;
   status?: 'draft' | 'ready' | 'posted';
+  images?: string[];
+  imageUrl?: string;
   createdAt?: string;
   updatedAt?: string;
   imageAdvice?: string;

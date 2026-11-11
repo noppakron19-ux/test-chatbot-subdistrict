@@ -45,6 +45,11 @@
           "description": "Emergency hotline number",
           "maxLength": 100
         },
+        "lineId": {
+          "type": "string",
+          "description": "Official Line ID of the SAO",
+          "maxLength": 100
+        },
         "workHours": {
           "type": "string",
           "description": "Official working hours",
@@ -139,6 +144,20 @@
           "type": "string",
           "description": "Post status (draft, ready, posted)",
           "maxLength": 50
+        },
+        "images": {
+          "type": "array",
+          "description": "List of attached image URLs or base64 previews",
+          "items": { "type": "string" }
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Primary preview image URL"
+        },
+        "imageAdvice": {
+          "type": "string",
+          "description": "PR photo recommendation",
+          "maxLength": 1000
         },
         "createdAt": {
           "type": "string",

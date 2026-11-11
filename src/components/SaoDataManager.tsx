@@ -476,13 +476,26 @@ export function SaoDataManager({
 
             <div>
               <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                Line ID ทางการ
+              </label>
+              <input
+                type="text"
+                value={profileForm.lineId || ''}
+                onChange={(e) => setProfileForm({ ...profileForm, lineId: e.target.value })}
+                placeholder="@smartthatoom"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-slate-800 text-sm focus:border-emerald-500 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 เบอร์โทรศัพท์สำนักงาน
               </label>
               <input
                 type="text"
                 value={profileForm.phone || ''}
                 onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
-                placeholder="037-285-347, 037-208-854"
+                placeholder="037-285161"
                 className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-slate-800 text-sm focus:border-emerald-500 focus:outline-none"
               />
             </div>
@@ -495,7 +508,7 @@ export function SaoDataManager({
                 type="text"
                 value={profileForm.emergencyPhone || ''}
                 onChange={(e) => setProfileForm({ ...profileForm, emergencyPhone: e.target.value })}
-                placeholder="037-285-347 ต่อ 199 หรือ 037-208-854"
+                placeholder="037-285347 (ตลอด 24 ชั่วโมง)"
                 className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-slate-800 text-sm focus:border-emerald-500 focus:outline-none"
               />
             </div>

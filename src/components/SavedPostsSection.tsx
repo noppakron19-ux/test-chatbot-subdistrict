@@ -14,7 +14,7 @@ import { PrPost } from '../types';
 interface SavedPostsSectionProps {
   posts: PrPost[];
   onDeletePost: (id: string) => Promise<void>;
-  onSelectForStudio: (content: string) => void;
+  onSelectForStudio: (content: string, images?: string[]) => void;
 }
 
 export function SavedPostsSection({
@@ -120,7 +120,22 @@ export function SavedPostsSection({
                   {post.title}
                 </h3>
 
-                <div className="bg-slate-50 rounded-xl p-3 text-xs text-slate-700 leading-relaxed font-normal whitespace-pre-wrap line-clamp-6 mb-3 border border-slate-100">
+                {(post.images && post.images.length > 0) || post.imageUrl ? (
+                  <div className="mb-2.5 rounded-xl overflow-hidden aspect-video bg-slate-100 border border-slate-200 relative">
+                    <img
+                      src={post.imageUrl || (post.images && post.images[0])}
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {post.images && post.images.length > 1 && (
+                      <span className="absolute bottom-1.5 right-1.5 px-1.5 py-0.5 rounded bg-black/70 text-white text-[10px] font-semibold">
+                        +{post.images.length - 1} รูป
+                      </span>
+                    )}
+                  </div>
+                ) : null}
+
+                <div className="bg-slate-50 rounded-xl p-3 text-xs text-slate-700 leading-relaxed font-normal whitespace-pre-wrap line-clamp-5 mb-3 border border-slate-100">
                   {post.content}
                 </div>
               </div>
@@ -132,7 +147,7 @@ export function SavedPostsSection({
                 </span>
 
                 <button
-                  onClick={() => onSelectForStudio(post.content)}
+                  onClick={() => onSelectForStudio(post.content, post.images)}
                   className="flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 px-2.5 py-1 rounded-lg hover:bg-blue-50 transition cursor-pointer"
                 >
                   <Share2 className="w-3 h-3" />

@@ -28,6 +28,7 @@ import {
 export default function App() {
   const [activeTab, setActiveTab] = useState<'chat' | 'facebook' | 'sao_data' | 'saved_posts'>('chat');
   const [studioInitialContent, setStudioInitialContent] = useState('');
+  const [studioInitialImages, setStudioInitialImages] = useState<string[]>([]);
 
   // Main state from Firebase Firestore
   const [profile, setProfile] = useState<SaoProfile>({
@@ -60,12 +61,20 @@ export default function App() {
       profileDocRef,
       (docSnap) => {
         if (docSnap.exists()) {
-          setProfile(docSnap.data() as SaoProfile);
+          const loaded = docSnap.data() as SaoProfile;
+          // Auto migrate if previous run stored Surin data or old phone
+          if (
+            loaded.province === 'จังหวัดสุรินทร์' ||
+            loaded.orgName?.includes('สุรินทร์') ||
+            (loaded.phone && loaded.phone.includes('044')) ||
+            !loaded.lineId
+          ) {
+            seedDefaultData();
+          } else {
+            setProfile(loaded);
+          }
         } else {
-          // Initialize if not present
-          setDoc(profileDocRef, profile).catch((err) =>
-            handleFirestoreError(err, OperationType.CREATE, 'sao_profiles/main')
-          );
+          seedDefaultData();
         }
       },
       (error) => {
@@ -88,8 +97,11 @@ export default function App() {
         });
         items.sort((a, b) => (a.order || 99) - (b.order || 99));
 
-        if (items.length === 0 && !isDbInitialized) {
-          // Seed defaults from API
+        const hasOldMayor = items.some(
+          (e) => e.name.includes('พศิน') || e.name.includes('เกษียรพันธุ์')
+        );
+
+        if (items.length === 0 || hasOldMayor) {
           seedDefaultData();
         } else {
           setExecutives(items);
@@ -100,7 +112,7 @@ export default function App() {
       }
     );
     return () => unsubscribe();
-  }, [isDbInitialized]);
+  }, []);
 
   // 3. Listen to Knowledge Base Items
   useEffect(() => {
@@ -396,8 +408,13 @@ export default function App() {
     setMessages([]);
   };
 
-  const handleTransferToFacebookStudio = (text: string) => {
+  const handleTransferToFacebookStudio = (text: string, images?: string[]) => {
     setStudioInitialContent(text);
+    if (images && images.length > 0) {
+      setStudioInitialImages(images);
+    } else {
+      setStudioInitialImages([]);
+    }
     setActiveTab('facebook');
   };
 
@@ -425,6 +442,7 @@ export default function App() {
           <FacebookStudioSection
             profile={profile}
             initialContent={studioInitialContent}
+            initialImages={studioInitialImages}
             onSavePost={handleSavePost}
           />
         )}
