@@ -1,0 +1,278 @@
+{
+  "entities": {
+    "SaoProfile": {
+      "title": "SaoProfile",
+      "description": "General profile and public contact info for the Subdistrict Administrative Organization (อบต.)",
+      "type": "object",
+      "properties": {
+        "orgName": {
+          "type": "string",
+          "description": "Official name of the อบต.",
+          "maxLength": 200
+        },
+        "district": {
+          "type": "string",
+          "description": "District name",
+          "maxLength": 100
+        },
+        "province": {
+          "type": "string",
+          "description": "Province name",
+          "maxLength": 100
+        },
+        "websiteUrl": {
+          "type": "string",
+          "description": "Official website URL",
+          "maxLength": 500
+        },
+        "facebookPage": {
+          "type": "string",
+          "description": "Official Facebook Page name/link",
+          "maxLength": 200
+        },
+        "address": {
+          "type": "string",
+          "description": "Office location address",
+          "maxLength": 500
+        },
+        "phone": {
+          "type": "string",
+          "description": "Office telephone number",
+          "maxLength": 100
+        },
+        "emergencyPhone": {
+          "type": "string",
+          "description": "Emergency hotline number",
+          "maxLength": 100
+        },
+        "workHours": {
+          "type": "string",
+          "description": "Official working hours",
+          "maxLength": 150
+        },
+        "vision": {
+          "type": "string",
+          "description": "Organization vision / slogan",
+          "maxLength": 1000
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last update",
+          "maxLength": 50
+        }
+      },
+      "required": ["orgName"]
+    },
+    "Executive": {
+      "title": "Executive",
+      "description": "Leaders and officials of the อบต. such as นายก อบต., รองนายก, ปลัด",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full title and name of the executive",
+          "maxLength": 200
+        },
+        "position": {
+          "type": "string",
+          "description": "Official position title",
+          "maxLength": 200
+        },
+        "department": {
+          "type": "string",
+          "description": "Department or branch",
+          "maxLength": 200
+        },
+        "phone": {
+          "type": "string",
+          "description": "Direct or office telephone number",
+          "maxLength": 100
+        },
+        "bio": {
+          "type": "string",
+          "description": "Short biography or duties",
+          "maxLength": 1000
+        },
+        "order": {
+          "type": "number",
+          "description": "Sorting priority order"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last update",
+          "maxLength": 50
+        }
+      },
+      "required": ["name", "position"]
+    },
+    "PrPost": {
+      "title": "PrPost",
+      "description": "Public relations post draft prepared for Facebook page publication",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Headline or title of the post",
+          "maxLength": 300
+        },
+        "content": {
+          "type": "string",
+          "description": "Formatted Facebook post body text with emojis and details",
+          "maxLength": 5000
+        },
+        "category": {
+          "type": "string",
+          "description": "PR topic category",
+          "maxLength": 100
+        },
+        "tone": {
+          "type": "string",
+          "description": "Writing tone style",
+          "maxLength": 50
+        },
+        "hashtags": {
+          "type": "string",
+          "description": "Facebook hashtags list",
+          "maxLength": 500
+        },
+        "status": {
+          "type": "string",
+          "description": "Post status (draft, ready, posted)",
+          "maxLength": 50
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp created",
+          "maxLength": 50
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp updated",
+          "maxLength": 50
+        }
+      },
+      "required": ["title", "content"]
+    },
+    "KnowledgeItem": {
+      "title": "KnowledgeItem",
+      "description": "Knowledge base entry for citizen inquiries and chatbot FAQ answers",
+      "type": "object",
+      "properties": {
+        "topic": {
+          "type": "string",
+          "description": "Subject or title of knowledge",
+          "maxLength": 200
+        },
+        "category": {
+          "type": "string",
+          "description": "Service category",
+          "maxLength": 100
+        },
+        "question": {
+          "type": "string",
+          "description": "Common citizen question",
+          "maxLength": 500
+        },
+        "answer": {
+          "type": "string",
+          "description": "Accurate informational answer",
+          "maxLength": 3000
+        },
+        "keywords": {
+          "type": "string",
+          "description": "Search tags and synonyms",
+          "maxLength": 300
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp updated",
+          "maxLength": 50
+        }
+      },
+      "required": ["topic", "answer"]
+    },
+    "ChatSession": {
+      "title": "ChatSession",
+      "description": "PR Chatbot conversation record",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Session topic summary",
+          "maxLength": 200
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last activity",
+          "maxLength": 50
+        }
+      },
+      "required": ["title"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Individual message in a chatbot session",
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "Sender role (user or assistant)",
+          "maxLength": 20
+        },
+        "content": {
+          "type": "string",
+          "description": "Message text",
+          "maxLength": 5000
+        },
+        "isVoice": {
+          "type": "boolean",
+          "description": "Flag indicating if input was spoken via microphone"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "ISO timestamp",
+          "maxLength": 50
+        }
+      },
+      "required": ["role", "content"]
+    }
+  },
+  "firestore": {
+    "/sao_profiles/{profileId}": {
+      "schema": {
+        "$ref": "#/entities/SaoProfile"
+      },
+      "description": "Subdistrict Administrative Organization profile configuration"
+    },
+    "/executives/{execId}": {
+      "schema": {
+        "$ref": "#/entities/Executive"
+      },
+      "description": "Executives directory (Mayor, Deputies, Chief Officer, etc.)"
+    },
+    "/pr_posts/{postId}": {
+      "schema": {
+        "$ref": "#/entities/PrPost"
+      },
+      "description": "Facebook PR draft posts and published library"
+    },
+    "/knowledge_items/{itemId}": {
+      "schema": {
+        "$ref": "#/entities/KnowledgeItem"
+      },
+      "description": "Citizen service FAQs and reference information"
+    },
+    "/chat_sessions/{sessionId}": {
+      "schema": {
+        "$ref": "#/entities/ChatSession"
+      },
+      "description": "PR Assistant Chat session headers"
+    },
+    "/chat_sessions/{sessionId}/messages/{messageId}": {
+      "schema": {
+        "$ref": "#/entities/ChatMessage"
+      },
+      "description": "Chat transcript messages"
+    }
+  }
+}

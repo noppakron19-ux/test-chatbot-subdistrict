@@ -1,0 +1,12 @@
+{
+  "projectId": "test-chatbot-subdistrict",
+  "appId": "1:260224244783:web:78c43de7dbfa6762273ada",
+  "apiKey": "AIzaSyA9IpdXEgsVQrNGwBgtT6Vb-JQXyE97A5Y",
+  "authDomain": "test-chatbot-subdistrict.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-aisaoprchatbotfa-740abdae-de1e-4cb1-bc30-5e88e5d59304",
+  "storageBucket": "test-chatbot-subdistrict.firebasestorage.app",
+  "messagingSenderId": "260224244783",
+  "measurementId": "",
+  "oAuthClientId": "260224244783-sgbkthku8airnc9rgauperurgo96gilm.apps.googleusercontent.com",
+  "recaptchaSiteKey": ""
+}

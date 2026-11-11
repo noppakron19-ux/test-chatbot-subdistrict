@@ -1,0 +1,7 @@
+{
+  "name": "อบต. ประชาสัมพันธ์ AI (SAO PR Chatbot & Facebook Creator)",
+  "description": "ระบบแชทบอทผู้ช่วยประชาสัมพันธ์ อบต. ให้ข้อมูลผู้บริหาร ภารกิจ บริการประชาชน พร้อมเครื่องมือช่วยคิดและเรียบเรียงเนื้อหาสำหรับโพสต์เพจ Facebook ด้วยเสียงและข้อความ บันทึกข้อมูลด้วย Firebase",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
