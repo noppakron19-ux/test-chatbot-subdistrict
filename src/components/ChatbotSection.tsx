@@ -185,7 +185,7 @@ export function ChatbotSection({
               {deputyMayors.map((d) => d.name).join(', ')}
             </span>
           )}
-          <span className="text-emerald-700 font-medium">โทร: {profile.phone || '044-591111'}</span>
+          <span className="text-emerald-700 font-medium">โทร: {profile.phone || '037-285-347'}</span>
         </div>
       </div>
 

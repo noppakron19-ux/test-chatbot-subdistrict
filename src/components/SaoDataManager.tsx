@@ -469,7 +469,7 @@ export function SaoDataManager({
                 type="text"
                 value={profileForm.facebookPage || ''}
                 onChange={(e) => setProfileForm({ ...profileForm, facebookPage: e.target.value })}
-                placeholder="องค์การบริหารส่วนตำบลท่าตูม จังหวัดสุรินทร์"
+                placeholder="องค์การบริหารส่วนตำบลท่าตูม อำเภอศรีมหาโพธิ จังหวัดปราจีนบุรี"
                 className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-slate-800 text-sm focus:border-emerald-500 focus:outline-none"
               />
             </div>
@@ -482,7 +482,7 @@ export function SaoDataManager({
                 type="text"
                 value={profileForm.phone || ''}
                 onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
-                placeholder="044-591111"
+                placeholder="037-285-347, 037-208-854"
                 className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-slate-800 text-sm focus:border-emerald-500 focus:outline-none"
               />
             </div>
@@ -495,7 +495,7 @@ export function SaoDataManager({
                 type="text"
                 value={profileForm.emergencyPhone || ''}
                 onChange={(e) => setProfileForm({ ...profileForm, emergencyPhone: e.target.value })}
-                placeholder="044-591199 หรือ 199"
+                placeholder="037-285-347 ต่อ 199 หรือ 037-208-854"
                 className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-slate-800 text-sm focus:border-emerald-500 focus:outline-none"
               />
             </div>
